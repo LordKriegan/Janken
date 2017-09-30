@@ -22,6 +22,10 @@
 	align-items: center;
 }
 
+#mobilebuttons {
+	display: none;
+}
+
 .divbg {
 	border-style: groove;
 	border-radius: 15px;
@@ -30,6 +34,18 @@
 	text-align: center;
 }
 
+.mButton {
+	font-size: 30px;
+	border-style: groove;
+	border-radius: 15px;
+	border-width: 5px;
+	border-color: black;
+	text-align: center;
+}
+
+.mButton:hover {
+	background: #ffffff;
+}
 header {
 	text-align: center;
 }
@@ -39,6 +55,12 @@ body {
 }
 
 @media screen and (max-width: 640px) {
+	#mobilebuttons {
+		display: block;
+		padding: 10px;
+		margin-bottom: 20px;
+		width: 180px;
+	}
 	.container {
 		flex-direction: column;
 	}
