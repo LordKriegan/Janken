@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Rock, Paper, Scissors!</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+	<div class="divbg">
+		<p>Press r for Rock, p for Paper, or s for Scissors!</p>
+	</div>
+    <div class="container">
+        <div class="divbg choiceContainer">
+            <img src="assets/images/rps.png" alt="" id="userChoice">
+        </div>
+        <div id="results" class="divbg">
+            <h1>Results:</h1>
+            <p>Wins: 0</p>
+            <p>Losses: 0</p>
+            <p>Ties: 0</p>
+        </div>
+        <div class="divbg choiceContainer">
+            <img src="assets/images/rps.png" alt="" id="compChoice">
+        </div>
+    </div>
+    <div class="divbg">
+    	<p id="error">Rocks beats scissors, scissors beats paper, and paper beats rock!</p>
+    </div>
+    <script type="text/javascript">
+    var compChoices = ["r", "p", "s"];
+    var wins = 0;
+    var losses = 0;
+    var ties = 0;
+    document.onkeyup = function(event) {
+        var userChoice = event.key.toLowerCase();
+        if ((userChoice !== "r") && (userChoice !== "p") && (userChoice !== "s")) {
+            document.querySelector("#error").innerHTML = event.key + " is not valid!!!!"
+            return;
+        }
+        else {
+        	document.querySelector("#error").innerHTML = "Rocks beats scissors, scissors beats paper, and paper beats rock!"
+        }
+        var compChoice = compChoices[Math.floor(Math.random() * compChoices.length)];
+        if (userChoice === compChoice) {
+            ties++;
+        } else if ((userChoice === "r") && (compChoice == "p")) {
+            losses++;
+        } else if ((userChoice === "r") && (compChoice == "s")) {
+            wins++;
+        } else if ((userChoice === "p") && (compChoice == "s")) {
+            losses++;
+        } else if ((userChoice === "p") && (compChoice == "r")) {
+            wins++;
+        } else if ((userChoice === "s") && (compChoice == "r")) {
+            losses++;
+        } else if ((userChoice === "s") && (compChoice == "p")) {
+            wins++;
+        }
+        document.querySelector("#results").innerHTML =
+          "<h1>Results: </h1>" +
+          "<p>Wins: " + wins + "</p>" +
+          "<p>Losses: " + losses + "</p>" +
+          "<p>Ties: " + ties + "</p>";
+        document.getElementById("userChoice").src = "assets/images/" + userChoice + ".png";
+        document.getElementById("compChoice").src = "assets/images/" + compChoice + ".png";
+    };
+    </script>
+</body>
+
+</html>
